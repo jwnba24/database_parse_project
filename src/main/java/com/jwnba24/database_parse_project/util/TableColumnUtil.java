@@ -12,7 +12,7 @@ public class TableColumnUtil {
     }
 
     public static String encodeColumnName(String columnName){
-        return columnName+"_column";
+        return columnName+"_column_opinion1";
     }
     public static String decodeColumnName(String columnName){
         return columnName.replace("_column","");

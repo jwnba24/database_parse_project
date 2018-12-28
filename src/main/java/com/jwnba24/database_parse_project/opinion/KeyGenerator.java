@@ -18,6 +18,10 @@ public class KeyGenerator {
                 return "col6";
             case "col6":
                 return "col6";
+            case "column":
+                return "columnName";
+            case "table":
+                return "tableName";
             default: return "";
         }
 
