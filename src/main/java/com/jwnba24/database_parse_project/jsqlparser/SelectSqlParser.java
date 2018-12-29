@@ -91,7 +91,7 @@ public class SelectSqlParser {
         return result;
     }
 
-    public String getWhere(String sql) throws JSQLParserException {
+    public static String getWhere(String sql) throws JSQLParserException {
         Select select = (Select) CCJSqlParserUtil.parse(sql);
         PlainSelect plainSelect = (PlainSelect) select.getSelectBody();
         Expression where = plainSelect.getWhere();
@@ -100,8 +100,12 @@ public class SelectSqlParser {
         }
         // 此处根据where实际情况强转 最外层
         EqualsTo equalsTo = (EqualsTo)where;
-        String column = ((EqualsTo) where).getLeftExpression().toString();
-        String value = ((EqualsTo) where).getRightExpression().toString();
+        String column = equalsTo.getLeftExpression().toString();
+        String value = equalsTo.getRightExpression().toString();
+        if(value.startsWith("\'")){
+            System.out.println("选中我了啊");
+            value = value.substring(1,value.length()-1);
+        }
         ((EqualsTo) where).setLeftExpression(new Column(TableColumnUtil.encodeColumnName(column)));
         try {
             String encode_value = AESECBEncoder.encrypt(value,column);

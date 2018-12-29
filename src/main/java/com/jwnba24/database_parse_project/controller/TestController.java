@@ -2,6 +2,7 @@ package com.jwnba24.database_parse_project.controller;
 
 import com.jwnba24.database_parse_project.jsqlparser.InsertSqlParser;
 import com.jwnba24.database_parse_project.jsqlparser.SelectSqlParser;
+import com.jwnba24.database_parse_project.service.OninionService;
 import com.jwnba24.database_parse_project.service.TestService;
 
 import java.util.ArrayList;
@@ -11,12 +12,8 @@ import java.util.List;
  * Created by jiwen on 2018/12/27.
  */
 public class TestController {
-    private TestService testService = new TestService();
+    private OninionService testService = new OninionService();
 
-    public void testInsert(){
-        String sql = "insert into table1 (col1,col2) values (jiwen1,jiwen2)";
-        testService.testInsert(sql);
-    }
 
     public void testSelect(){
         //模拟只有r1权限的用户去查询权限以外的列
@@ -35,7 +32,7 @@ public class TestController {
             List<String> sqlList = new ArrayList<>();
             List<String> encodeSqlList = new ArrayList<>();
             for(int i=0;i<10;i++){
-                StringBuilder sb = new StringBuilder("insert into table1 (col1,col2) values ("+"test_1_"+0+","+"test_2_"+0+")");
+                StringBuilder sb = new StringBuilder("insert into table1 (col1,col2) values ("+"test_1_"+1+","+"test_2_"+1+")");
                 sqlList.add(sb.toString());
             }
             sqlList.forEach(s->{

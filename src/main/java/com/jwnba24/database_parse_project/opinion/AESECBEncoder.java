@@ -45,6 +45,10 @@ public class AESECBEncoder {
             throw new Exception("AES加密失败：content=" +content +" key="+key);
         }
     }
+
+    public static void main(String[] args) throws Exception{
+        AESECBEncoder.encrypt("test_2_0","col2");
+    }
  
     /**
      * AES/ECB/PKCS7Padding 解密

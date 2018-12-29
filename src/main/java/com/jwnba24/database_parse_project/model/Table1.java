@@ -6,9 +6,11 @@ package com.jwnba24.database_parse_project.model;
 public class Table1 {
     Integer id;
     String col1_name;
+    String col1_name_encode;
     String col1_value;
     String col1_IV;
     String col2_name;
+    String col2_name_encode;
     String col2_value;
     String col2_IV;
 
@@ -66,5 +68,31 @@ public class Table1 {
 
     public void setCol2_IV(String col2_IV) {
         this.col2_IV = col2_IV;
+    }
+
+    public String getCol1_name_encode() {
+        return col1_name_encode;
+    }
+
+    public void setCol1_name_encode(String col1_name_encode) {
+        this.col1_name_encode = col1_name_encode;
+    }
+
+    public String getCol2_name_encode() {
+        return col2_name_encode;
+    }
+
+    public void setCol2_name_encode(String col2_name_encode) {
+        this.col2_name_encode = col2_name_encode;
+    }
+
+    @Override
+    public String toString() {
+        return "Table1{" +
+                "col1_name='" + col1_name + '\'' +
+                ", col1_value='" + col1_value + '\'' +
+                ", col2_name='" + col2_name + '\'' +
+                ", col2_value='" + col2_value + '\'' +
+                '}';
     }
 }

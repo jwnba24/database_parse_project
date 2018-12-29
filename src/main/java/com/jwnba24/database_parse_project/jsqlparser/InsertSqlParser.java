@@ -54,7 +54,7 @@ public class InsertSqlParser {
             Object value = entry.getValue();
             columnList_new.add(new Column(key));
             String temp = value.toString();
-            StringValue stringValue = new StringValue(" "+temp+" ");
+            StringValue stringValue = new StringValue(temp);
             expressionList_new.add(stringValue);
 
         }
