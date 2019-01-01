@@ -50,8 +50,9 @@ public class CPABEEncoder {
      * @return
      */
     public boolean judgeIsOk(String sql,String prv_file) throws Exception{
-        List<String> tableList = SelectSqlParser.getTableName(sql);
-        List<String> items = SelectSqlParser.getItems(sql);
+        SelectSqlParser selectSqlParser = new SelectSqlParser();
+        List<String> tableList = selectSqlParser.getTableName(sql);
+        List<String> items = selectSqlParser.getItems(sql);
         String tableName = tableList.get(0);
         boolean flag = true;
         for(String item:items){

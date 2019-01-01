@@ -31,10 +31,11 @@ public class TestService {
         boolean flag = cpabeEncoder.judgeIsOk(sql, Attribute.getPrvfile(prvFileName));
         if(flag){
             //1. 解除rnd层洋葱
-            opinionService.peelingRndOnion(sql,prvFileName);
+            opinionService.peelingRndOnion(sql);
             //2. 真正的查询
             List<Table1> table1List = testDao.virtualUdfSelect(selectSql);
-            List<String> items = SelectSqlParser.getItems(selectSql);
+            SelectSqlParser selectSqlParser = new SelectSqlParser();
+            List<String> items = selectSqlParser.getItems(selectSql);
             result = new ArrayList<>();
             for (Table1 t : table1List) {
                 HashMap<String,String> hashMap = new HashMap<>();

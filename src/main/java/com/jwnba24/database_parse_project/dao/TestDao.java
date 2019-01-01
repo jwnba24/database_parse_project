@@ -3,7 +3,6 @@ package com.jwnba24.database_parse_project.dao;
 import com.jwnba24.database_parse_project.common.TableColumnMapper;
 import com.jwnba24.database_parse_project.jsqlparser.InsertSqlParser;
 import com.jwnba24.database_parse_project.jsqlparser.SelectSqlParser;
-import com.jwnba24.database_parse_project.model.Model1;
 import com.jwnba24.database_parse_project.model.Table1;
 import com.jwnba24.database_parse_project.opinion.AESECBEncoder;
 import com.jwnba24.database_parse_project.util.DbUtil;

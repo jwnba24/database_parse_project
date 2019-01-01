@@ -59,7 +59,7 @@ public class SelectSqlParser {
      * @param sql
      * @return
      */
-    public static List<String> getItems(String sql) throws Exception{
+    public List<String> getItems(String sql) throws Exception{
         Select select = (Select) CCJSqlParserUtil.parse(sql);
         PlainSelect plainSelect = (PlainSelect) select.getSelectBody();
         List<SelectItem> selectItems = plainSelect.getSelectItems();
@@ -77,7 +77,7 @@ public class SelectSqlParser {
      * @param sql
      * @return
      */
-    public static List<String> getTableName(String sql) throws Exception{
+    public List<String> getTableName(String sql) throws Exception{
         Statement statement = CCJSqlParserUtil.parse(sql);
         Select selectStatement = (Select) statement;
         TablesNamesFinder tablesNamesFinder = new TablesNamesFinder();

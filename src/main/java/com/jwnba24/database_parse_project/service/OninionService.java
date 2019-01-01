@@ -1,5 +1,6 @@
 package com.jwnba24.database_parse_project.service;
 
+import com.jwnba24.database_parse_project.common.Attribute;
 import com.jwnba24.database_parse_project.common.TableColumnMapper;
 import com.jwnba24.database_parse_project.dao.TestDao;
 import com.jwnba24.database_parse_project.jsqlparser.SelectSqlParser;
@@ -7,6 +8,7 @@ import com.jwnba24.database_parse_project.jsqlparser.UpdateSqlParser;
 import com.jwnba24.database_parse_project.model.Table1;
 import com.jwnba24.database_parse_project.opinion.AESCBCEncoder;
 import com.jwnba24.database_parse_project.opinion.AESECBEncoder;
+import com.jwnba24.database_parse_project.opinion.CPABEEncoder;
 import com.jwnba24.database_parse_project.util.FileUtil;
 import com.jwnba24.database_parse_project.util.TableColumnUtil;
 import net.sf.jsqlparser.expression.Expression;
@@ -33,16 +35,16 @@ public class OninionService {
      * 剥rnd层洋葱
      *
      * @param sql
-     * @param prvFileName
      * @return 返回解洋葱后的密文
      */
-    public void peelingRndOnion(String sql, String prvFileName) {
+    public void peelingRndOnion(String sql) {
+        SelectSqlParser selectSqlParser = new SelectSqlParser();
         try {
             List<Table1> list = testDao.virtualUdfSelect(sql);//未进行属性解密的密文
             //获取key，进行属性解密
             List<String> columnList = null;
-            List<String> items = SelectSqlParser.getItems(sql);
-            List<String> tables = SelectSqlParser.getTableName(sql);
+            List<String> items = selectSqlParser.getItems(sql);
+            List<String> tables = selectSqlParser.getTableName(sql);
             String tableName = tables.get(0);
             if (StringUtils.isEmpty(tableName)) {
                 System.out.println("表名称不能为空");
@@ -94,9 +96,9 @@ public class OninionService {
 
     //加上洋葱
     public String addRndOpinion(String sql, Table1 table1) throws Exception {
-
-        List<String> items = SelectSqlParser.getItems(sql);
-        List<String> tables = SelectSqlParser.getTableName(sql);
+        SelectSqlParser selectSqlParser = new SelectSqlParser();
+        List<String> items = selectSqlParser.getItems(sql);
+        List<String> tables = selectSqlParser.getTableName(sql);
         String tableName = tables.get(0);
         Update update = new Update();
         //添加表名称
@@ -134,15 +136,20 @@ public class OninionService {
     }
 
     public static void main(String[] args) throws Exception {
+
+        SelectSqlParser selectSqlParser = new SelectSqlParser();
         //首先是剥除洋葱
         String sql = "select col2 from table1";
+        CPABEEncoder cpabeEncoder = new CPABEEncoder();
+        boolean flag = cpabeEncoder.judgeIsOk(sql, Attribute.getPrvfile("col2"));
+
         OninionService testService = new OninionService();
-        testService.peelingRndOnion(sql, "col2");
+        testService.peelingRndOnion(sql);
         //然后是真正的查询
         String selectSql = "select col2 from table1 where col2='test_2_1'";
         TestDao testDao = new TestDao();
         List<Table1> table1List = testDao.virtualUdfSelect(selectSql);
-        List<String> items = SelectSqlParser.getItems(selectSql);
+        List<String> items = selectSqlParser.getItems(selectSql);
         List<Table1> plainTable = new ArrayList<>();
         for (Table1 t : table1List) {
             Table1 table1 = new Table1();
