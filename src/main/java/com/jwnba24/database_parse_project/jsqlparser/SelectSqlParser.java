@@ -41,7 +41,7 @@ public class SelectSqlParser {
         for(String item : items){
             if("*".equals(item)) {continue;}
             selectItems.add(new SelectExpressionItem(CCJSqlParserUtil.parseExpression(TableColumnUtil.encodeColumnName(item))));
-            selectItems.add(new SelectExpressionItem(CCJSqlParserUtil.parseExpression(item+"_IV")));
+            selectItems.add(new SelectExpressionItem(CCJSqlParserUtil.parseExpression(TableColumnUtil.encodeIV(item))));
         }
         selectItems.add(new SelectExpressionItem(CCJSqlParserUtil.parseExpression("id")));
         plainSelect.setSelectItems(selectItems);
