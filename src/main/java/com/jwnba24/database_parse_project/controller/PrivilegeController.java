@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
  * 为用户分配权限
  */
 @RestController
-@RequestMapping("/privilage")
-public class PrivilageController {
+@RequestMapping("/privilege")
+public class PrivilegeController {
     @RequestMapping("/generate")
-    public void generatePrvKey(String columns){
+    public void generatePrvKey(String user, String columns){
         String[] column = columns.split(",");
         for(String s: column){
             //遍历所有权限列得到其角色集合

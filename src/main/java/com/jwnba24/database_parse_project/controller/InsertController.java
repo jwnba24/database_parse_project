@@ -25,7 +25,7 @@ public class InsertController {
      * @throws Exception
      */
     @RequestMapping(value = "/sql/rewrite",method = RequestMethod.POST)
-    public String reWriteSql(String data) throws Exception {
+    public Result reWriteSql(String data) throws Exception {
         //批量插入的sql语句改写
         String[] sqlList = data.split(";");
         List<String> result = new ArrayList<>();
@@ -34,7 +34,10 @@ public class InsertController {
             String encode = insertSqlParser.encodeSQL(s);
             result.add(encode);
         }
-        return "index";
+        Result r = new Result();
+        r.setStatus(true);
+        r.setData("");
+        return r;
     }
 
     /**

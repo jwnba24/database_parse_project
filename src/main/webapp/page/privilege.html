@@ -89,12 +89,12 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-md-12">
-                    <label for="plainSql" class="col-sm-3 control-label">选择用户</label>
+                    <label for="user" class="col-sm-3 control-label">选择用户</label>
                     <div class="col-sm-10">
-                       <select class="form-control">
+                       <select class="form-control" id="user">
                            <option>user1</option>
                            <option>user2</option>
-                           <option>user2</option>
+                           <option>user3</option>
                        </select>
                     </div>
                 </div>
@@ -105,10 +105,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <label for="plainSql" class="col-sm-5 control-label">选择授权权限的数据列</label>
+                    <label class="col-sm-5 control-label">选择授权权限的数据列</label>
                     <div class="col-sm-10">
-                        <input type="checkbox" name="col1" >col1&nbsp;
-                        <input type="checkbox" name="col2" >col2&nbsp;
+                        <input type="checkbox" name="column" value="col1">col1&nbsp;
+                        <input type="checkbox" name="column" value="col2" >col2&nbsp;
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-1"></div>
-                <button type="button" class="btn btn-success">授权并生成私钥</button>
+                <button type="button" class="btn btn-success" onclick="grant()">授权并生成私钥</button>
             </div>
             <!-- /.row -->
         </div>
@@ -142,6 +142,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/privilege.js"></script>
+
 
 </body>
 

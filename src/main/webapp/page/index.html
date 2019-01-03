@@ -101,23 +101,22 @@
             </div>
             <div class="row">
                 <div class="col-sm-5"></div>
-                <button type="button" class="btn btn-danger">sql转换</button>
+                <button type="button" class="btn btn-danger" onclick="changeSql()">sql转换</button>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <label for="plainSql" class="col-sm-3 control-label">密文sql</label>
+                    <label for="encodeSql" class="col-sm-3 control-label">密文sql</label>
                     <div class="col-sm-10">
-                       <textarea class="form-control" id="plainSql" rows="5" readonly=""></textarea>
+                       <textarea class="form-control" rows="5" id="encodeSql" readonly="readonly"></textarea>
                     </div>
                 </div>
-                <!-- <div class="col-md-6"></div> -->
             </div>
             <div class="row">
                 <div class="col-sm-5">&nbsp;</div>
             </div>
             <div class="row">
                 <div class="col-sm-5"></div>
-                <button type="button" class="btn btn-success">插入数据库</button>
+                <button type="button" class="btn btn-success" onclick="insertSql()">插入数据库</button>
             </div>
 
             <div class="row">
@@ -151,6 +150,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../js/index.js"></script>
 
 </body>
 
