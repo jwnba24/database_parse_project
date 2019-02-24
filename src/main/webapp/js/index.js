@@ -11,7 +11,7 @@ function changeSql() {
         data: {"data": value},
         success: function (data) {
             if(data.status){
-                $("#encodeSql").val(data.data);
+                $("#encodeSql").html(data.data);
             }
         }
     });

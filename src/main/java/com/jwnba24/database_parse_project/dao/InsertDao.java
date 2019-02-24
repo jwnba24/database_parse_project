@@ -17,10 +17,10 @@ public class InsertDao {
         Statement st = null;
         InsertSqlParser insertSqlParser = new InsertSqlParser();
         try {
-            String encode_sql = insertSqlParser.encodeSQL(sql);
+//            String encode_sql = insertSqlParser.encodeSQL(sql);
             conn = dbUtil.getConn();
             st = conn.createStatement();
-            st.execute(encode_sql);
+            st.execute(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }finally {

@@ -17,9 +17,7 @@ function grant() {
         dataType:"json",
         data: {"columns": columnsString,"user":user},
         success: function (data) {
-            if(data.status){
-                $("#encodeSql").val(data.data);
-            }
+            alert("生成密钥成功！");
         }
     });
 }

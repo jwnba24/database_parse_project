@@ -24,6 +24,9 @@ public class Attribute {
     public static String getPrvfile(String fileName){
         return dir+fileName+"/prv_key";
     }
+    public static String getUserPrvfile(String fileName,String userName){
+        return dir+fileName+"/"+userName+"_prv_key";
+    }
     public static String getEncodeFile(String fileName){
         return dir+fileName+"/key.cpe";
     }
@@ -31,4 +34,5 @@ public class Attribute {
     public static String getDecodeFile(String columnName) {
         return dir+columnName+"/key";
     }
+
 }

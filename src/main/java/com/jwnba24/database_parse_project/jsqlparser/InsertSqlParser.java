@@ -76,7 +76,8 @@ public class InsertSqlParser {
             String ecb_value = AESECBEncoder.encrypt(value,key);
 
             //使用CBC模式AES加密，回传IV值
-            HashMap<String,String> cbc_result = AESCBCEncoder.encrypt(ecb_value, key);
+            HashMap<String, String> encrypt = AESCBCEncoder.encrypt(ecb_value, key);
+            HashMap<String,String> cbc_result = encrypt;
             //将一扩展至多个洋葱层，以下对应不同的加密操作
             result.put(key+"_column_opinion1",cbc_result.get("value"));
             result.put(key+"_column_opinion2",cbc_result.get("value"));

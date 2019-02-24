@@ -8,7 +8,7 @@ function changeSql() {
         url:"/select/sql/rewrite",
         type:"POST",
         dataType:"json",
-        data: {"data": value},
+        data: {"sql": value},
         success: function (data) {
             if(data.status){
                 $("#encodeSql").val(data.data);
@@ -18,19 +18,22 @@ function changeSql() {
 }
 
 function insertSql() {
-    var value = $("#encodeSql").val();
-    if(isEmpty(value)){
+    var sql = $("#plainSql").val();
+    var user = $("#user").val();
+    if(isEmpty(sql)){
         alert("请输入sql！");
         return;
     }
     $.ajax({
-        url:"/select/sql/insert",
+        url:"/select/sql/select",
         type:"POST",
         dataType:"json",
-        data: {"data": value},
+        data: {"sql": sql,"user":user},
         success: function (data) {
             if(data.status){
-
+                $("#result").val(data.data);
+            }else {
+                alert(data.data);
             }
         }
     });
